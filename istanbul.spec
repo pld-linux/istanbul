@@ -68,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %attr(755,root,root) %{_bindir}/%{name}
 %{_desktopdir}/*
-%attr(755,root,root) %{_libdir}/gstreamer-*/*.so
+%attr(755,root,root) %{_libdir}/gstreamer-*/*.so*
 %{_mandir}/man1/*
 %{_pixmapsdir}/*
 %{py_sitescriptdir}/%{name}
