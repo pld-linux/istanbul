@@ -19,6 +19,7 @@ BuildRequires:	python-gnome-extras-devel
 BuildRequires:	python-gstreamer >= 0.10
 BuildRequires:	python-pygtk-gtk
 %pyrequires_eq	python-libs
+Requires:	gstreamer-GConf
 Requires:	gstreamer-theora
 Requires:	gstreamer-vorbis
 Requires:	python-gnome-extras-egg
