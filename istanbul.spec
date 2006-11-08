@@ -20,6 +20,7 @@ BuildRequires:	python-gstreamer >= 0.10
 BuildRequires:	python-pygtk-gtk
 %pyrequires_eq	python-libs
 Requires:	gstreamer-theora
+Requires:	python-gnome-extras-egg
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
