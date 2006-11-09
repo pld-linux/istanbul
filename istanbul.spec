@@ -6,6 +6,7 @@ License:	GPL v2
 Group:		X11/Applications
 Source0:	http://zaheer.merali.org/%{name}-%{version}.tar.bz2
 # Source0-md5:	a28cad50f8e29bdce6f8a61af7932539
+Patch0:		%{name}-quality.patch
 URL:		http://live.gnome.org/Istanbul
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -31,6 +32,7 @@ It records your session into an Ogg Theora video file.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__intltoolize}
