@@ -1,4 +1,5 @@
 Summary:	Desktop session recorder for the Free Desktop
+Summary(pl):	Narzêdzie do nagrywania sesji graficznych
 Name:		istanbul
 Version:	0.2.1
 Release:	1
@@ -19,6 +20,8 @@ BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-extras-devel
 BuildRequires:	python-gstreamer >= 0.10
 BuildRequires:	python-pygtk-gtk
+Requires(post,postun):	/sbin/ldconfig
+Requires(post,postun):	GConf2
 %pyrequires_eq	python-libs
 Requires:	gstreamer-GConf
 Requires:	gstreamer-theora
@@ -29,6 +32,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Istanbul is a desktop session recorder for the Free Desktop.
 It records your session into an Ogg Theora video file.
+
+%description -l pl
+Istanbul to narzêdzie do nagrywania sesji graficznych. Nagrywa sesje
+do plików filmów w formacie Ogg Theora.
 
 %prep
 %setup -q
@@ -70,18 +77,10 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-
 %attr(755,root,root) %{_bindir}/%{name}
-%{_desktopdir}/*
 %attr(755,root,root) %{_libdir}/gstreamer-*/*.so*
 %{_mandir}/man1/*
+%{_desktopdir}/*
 %{_pixmapsdir}/*
 %{py_sitescriptdir}/%{name}
 %{_sysconfdir}/gconf/schemas/*
-
-%if %{with subpackage}
-%files subpackage
-%defattr(644,root,root,755)
-#%doc extras/*.gz
-#%{_datadir}/%{name}-ext
-%endif
