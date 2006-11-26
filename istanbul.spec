@@ -9,6 +9,7 @@ Source0:	http://zaheer.merali.org/%{name}-%{version}.tar.bz2
 # Source0-md5:	a28cad50f8e29bdce6f8a61af7932539
 Patch0:		%{name}-quality.patch
 URL:		http://live.gnome.org/Istanbul
+BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gstreamer-devel >= 0.10
