@@ -1,5 +1,5 @@
 Summary:	Desktop session recorder for the Free Desktop
-Summary(pl):	Narzêdzie do nagrywania sesji graficznych
+Summary(pl.UTF-8):   NarzÄ™dzie do nagrywania sesji graficznych
 Name:		istanbul
 Version:	0.2.1
 Release:	1
@@ -35,9 +35,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Istanbul is a desktop session recorder for the Free Desktop.
 It records your session into an Ogg Theora video file.
 
-%description -l pl
-Istanbul to narzêdzie do nagrywania sesji graficznych. Nagrywa sesje
-do plików filmów w formacie Ogg Theora.
+%description -l pl.UTF-8
+Istanbul to narzÄ™dzie do nagrywania sesji graficznych. Nagrywa sesje
+do plikÃ³w filmÃ³w w formacie Ogg Theora.
 
 %prep
 %setup -q
