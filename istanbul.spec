@@ -1,5 +1,5 @@
 Summary:	Desktop session recorder for the Free Desktop
-Summary(pl.UTF-8):   Narzędzie do nagrywania sesji graficznych
+Summary(pl.UTF-8):	Narzędzie do nagrywania sesji graficznych
 Name:		istanbul
 Version:	0.2.1
 Release:	1
