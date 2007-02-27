@@ -1,12 +1,12 @@
 Summary:	Desktop session recorder for the Free Desktop
 Summary(pl.UTF-8):	Narzędzie do nagrywania sesji graficznych
 Name:		istanbul
-Version:	0.2.1
+Version:	0.2.2
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://zaheer.merali.org/%{name}-%{version}.tar.bz2
-# Source0-md5:	a28cad50f8e29bdce6f8a61af7932539
+# Source0-md5:	8ddcfd5a29dcd10fdafc10af9f66848b
 Patch0:		%{name}-quality.patch
 URL:		http://live.gnome.org/Istanbul
 BuildRequires:	GConf2-devel
@@ -19,6 +19,7 @@ BuildRequires:	intltool
 BuildRequires:	libtool
 BuildRequires:	perl-XML-Parser
 BuildRequires:	pkgconfig
+BuildRequires:	python-Xlib >= 0.13
 BuildRequires:	python-gnome-extras-devel
 BuildRequires:	python-gstreamer >= 0.10
 BuildRequires:	python-pygtk-gtk

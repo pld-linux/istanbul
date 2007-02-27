@@ -1,48 +1,5 @@
 --- istanbul-0.2.1/istanbul/main/screencast.py~	2006-07-28 17:52:17.000000000 +0200
 +++ istanbul-0.2.1/istanbul/main/screencast.py	2006-11-09 00:43:26.706471000 +0100
-@@ -46,11 +46,18 @@
-         screen = Screen().current
-         width = screen.get_width()
-         height = screen.get_height()
-+	left = 0
-+	top = 0
-         self.video_framerate = Preferences().Settings["video_framerate"]
- 
-         if self.selector:
-             width = self.selector.x2 - self.selector.x1
-             height = self.selector.y2 - self.selector.y1
-+            left = self.selector.x1
-+            top = self.selector.y1
-+
-+        right = screen.get_width() - width - left
-+        bottom = screen.get_height() - height - top
- 
-         if Preferences().Settings["video_size"] == "half":
-             width = width / 2
-@@ -68,12 +75,7 @@
-             videoscale_method=2
- 
-         #source = 'ximagesrc'
--        vsource = 'istximagesrc name=videosource'
--        if self.selector:
--            vsource = 'istximagesrc startx=%d starty=%d endx=%d endy=%d '\
--                'name=videosource' % (
--                self.selector.x1, self.selector.y1, self.selector.x2-1, 
--                self.selector.y2-1)
-+        vsource = 'ximagesrc name=videosource'
- 
-         if Preferences().Settings["record_3d"]:
-             vsource = "%s use-damage=false" % vsource
-@@ -81,8 +83,7 @@
-             vsource = "%s show-pointer=false" % vsource
- 
-         vcappipeline = '%s ! video/x-raw-rgb,framerate=%s ! videorate ! '\
--            'ffmpegcolorspace ! videoscale method=%d' % (vsource, 
--                framerate, videoscale_method)
-+            'ffmpegcolorspace ! videobox left=%d top=%d right=%d bottom=%d ! videoscale method=%d' % (vsource, framerate, left, top, right, bottom, videoscale_method)
-         acappipeline = ''
-         asource = ''
- 	if Preferences().Settings["record_sound"]:
 @@ -93,7 +94,7 @@
              acappipeline = '%s ! audioconvert ! vorbisenc' % asource
  
