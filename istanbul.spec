@@ -30,6 +30,7 @@ Requires:	gstreamer-GConf
 Requires:	gstreamer-theora
 Requires:	gstreamer-vorbis
 Requires:	python-gnome-extras-egg
+Requires:   Python-Xlib >= 0.13
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
