@@ -2,7 +2,7 @@ Summary:	Desktop session recorder for the Free Desktop
 Summary(pl.UTF-8):	Narzędzie do nagrywania sesji graficznych
 Name:		istanbul
 Version:	0.2.2
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://zaheer.merali.org/%{name}-%{version}.tar.bz2
@@ -31,6 +31,8 @@ Requires:	gstreamer-theora
 Requires:	gstreamer-vorbis
 Requires:	python-Xlib >= 0.13
 Requires:	python-gnome-extras-egg
+# sr@Latn vs. sr@latin
+Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -65,6 +67,8 @@ rm -rf $RPM_BUILD_ROOT
 %py_ocomp $RPM_BUILD_ROOT%{py_sitescriptdir}/%{name}
 %py_postclean $RPM_BUILD_ROOT%{py_sitescriptdir}/%{name}
 
+[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
+	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 %find_lang %{name} --with-gnome
 
 %clean
