@@ -2,7 +2,7 @@ Summary:	Desktop session recorder for the Free Desktop
 Summary(pl.UTF-8):	Narzędzie do nagrywania sesji graficznych
 Name:		istanbul
 Version:	0.2.2
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://zaheer.merali.org/%{name}-%{version}.tar.bz2
