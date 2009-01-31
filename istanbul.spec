@@ -2,7 +2,7 @@ Summary:	Desktop session recorder for the Free Desktop
 Summary(pl.UTF-8):	Narzędzie do nagrywania sesji graficznych
 Name:		istanbul
 Version:	0.2.2
-Release:	6
+Release:	7
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://zaheer.merali.org/%{name}-%{version}.tar.bz2
@@ -25,20 +25,22 @@ BuildRequires:	python-gnome-extras-devel
 BuildRequires:	python-gstreamer >= 0.10
 BuildRequires:	python-pygtk-gtk
 Requires(post,postun):	/sbin/ldconfig
-Requires(post,postun):	GConf2
+Requires(post,preun):	GConf2
 %pyrequires_eq	python-libs
 Requires:	gstreamer-GConf
+Requires:	gstreamer-imagesink-x
 Requires:	gstreamer-theora
 Requires:	gstreamer-vorbis
 Requires:	python-Xlib >= 0.13
 Requires:	python-gnome-extras-egg
+Requires:	python-gstreamer >= 0.10
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Istanbul is a desktop session recorder for the Free Desktop.
-It records your session into an Ogg Theora video file.
+Istanbul is a desktop session recorder for the Free Desktop. It
+records your session into an Ogg Theora video file.
 
 %description -l pl.UTF-8
 Istanbul to narzędzie do nagrywania sesji graficznych. Nagrywa sesje
@@ -71,7 +73,10 @@ rm -rf $RPM_BUILD_ROOT
 
 [ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
 	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
-%find_lang %{name} --with-gnome
+
+rm -f $RPM_BUILD_ROOT%{_libdir}/gstreamer-*/*.la
+
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -80,17 +85,18 @@ rm -rf $RPM_BUILD_ROOT
 %gconf_schema_install istanbul.schemas
 /sbin/ldconfig
 
-%postun
+%preun
 %gconf_schema_uninstall istanbul.schemas
-/sbin/ldconfig
+
+%postun	-p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_libdir}/gstreamer-*/*.so*
-%{_mandir}/man1/*
-%{_desktopdir}/*
-%{_pixmapsdir}/*
+%{_mandir}/man1/*.1*
+%{_desktopdir}/istanbul.desktop
+%{_pixmapsdir}/istanbul.png
 %{py_sitescriptdir}/%{name}
-%{_sysconfdir}/gconf/schemas/*
+%{_sysconfdir}/gconf/schemas/istanbul.schemas
