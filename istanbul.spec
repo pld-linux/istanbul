@@ -22,8 +22,9 @@ BuildRequires:	perl-XML-Parser
 BuildRequires:	pkgconfig
 BuildRequires:	python-Xlib >= 0.13
 BuildRequires:	python-gnome-extras-devel
-BuildRequires:	python-gstreamer >= 0.10
+BuildRequires:	python-gstreamer-devel >= 0.10
 BuildRequires:	python-pygtk-gtk
+BuildRequires:	rpm-pythonprov
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,preun):	GConf2
 %pyrequires_eq	python-libs
