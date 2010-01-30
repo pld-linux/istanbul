@@ -2,13 +2,14 @@ Summary:	Desktop session recorder for the Free Desktop
 Summary(pl.UTF-8):	Narzędzie do nagrywania sesji graficznych
 Name:		istanbul
 Version:	0.2.2
-Release:	8
+Release:	9
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://zaheer.merali.org/%{name}-%{version}.tar.bz2
 # Source0-md5:	8ddcfd5a29dcd10fdafc10af9f66848b
 Patch0:		%{name}-quality.patch
 Patch1:		%{name}-build.patch
+Patch2:		%{name}-debian.patch
 URL:		http://live.gnome.org/Istanbul
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
@@ -51,6 +52,10 @@ do plików filmów w formacie Ogg Theora.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+for a in `cat debian/patches/series`; do
+	patch -p1 < debian/patches/$a || exit 1
+done
 
 %build
 %{__intltoolize}
